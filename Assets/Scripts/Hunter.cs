@@ -13,7 +13,10 @@ namespace Hunter.Scripts
 			hunterTransform.position += hunterTransform.forward * speed.magnitude;
 		}
 
-
+		private void OnTriggerEnter2D(Collider2D collider)
+		{
+			
+		}
 
 		private void Update ()
 		{

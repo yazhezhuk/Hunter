@@ -5,7 +5,7 @@ namespace Steering
 {
 	public abstract class SteeringBehaviour : MonoBehaviour
 	{
-		[SerializeField] public int priority;
+		public int priority;
 		public SteeringObject source;
 
 		void Start()

@@ -1,4 +1,4 @@
-namespace Hunter.Scripts.Steering
+namespace Steering
 {
 	public interface ISteeringStrategySelector
 	{

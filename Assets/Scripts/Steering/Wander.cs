@@ -1,11 +1,7 @@
-using System;
-using System.Threading.Tasks;
-using Steering;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Hunter.Scripts.Steering
+namespace Steering
 {
 	public class Wander : SteeringBehaviour
 	{

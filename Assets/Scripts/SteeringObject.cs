@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class SteeringObject : MonoBehaviour
 {
-	protected SteeringManager steeringManager;
+	protected SteeringManager SteeringManager;
 
 	public Vector2 velocity;
 	public Vector2 acceleration;
@@ -14,15 +14,18 @@ public abstract class SteeringObject : MonoBehaviour
 
 	public void Awake()
 	{
-		steeringManager = ScriptableObject.CreateInstance<SteeringManager>();
+		SteeringManager = ScriptableObject.CreateInstance<SteeringManager>();
 	}
 
-	public abstract void ApplyForce(Vector2 force);
+	public void ApplyForce(Vector2 force)
+	{
+		acceleration += force;
+	}
 
 	public void ApplySteeringForces()
 	{
-		steeringManager.ResolveSteeringComponents(this);
-		var steeringForce = steeringManager.GetResultingSteeringVelocity().normalized * maxSteeringForce;
+		SteeringManager.ResolveSteeringComponents(this);
+		var steeringForce = SteeringManager.GetResultingSteeringVelocity().normalized * maxSteeringForce;
 
 		ApplyForce(steeringForce);
 	}

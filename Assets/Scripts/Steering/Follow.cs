@@ -1,8 +1,7 @@
 using System.Linq;
-using Steering;
 using UnityEngine;
 
-namespace Hunter.Scripts.Steering
+namespace Steering
 {
 	public class Follow : SteeringBehaviour
 	{

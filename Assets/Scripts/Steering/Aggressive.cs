@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Hunter.Scripts.Steering
+namespace Steering
 {
 	public class Aggressive : MonoBehaviour
 	{

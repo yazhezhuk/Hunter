@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Hunter.Scripts.Steering;
 using Steering;
 using UnityEngine;
 
@@ -19,15 +18,12 @@ namespace Hunter.Scripts
 		}
 
 
-		void Attack(object target)
+		private void OnTriggerEnter2D(Collider2D collider)
 		{
 
 		}
 
-		public override void ApplyForce(Vector2 force)
-		{
-			acceleration += force;
-		}
+
 
 		private void Update()
 		{
