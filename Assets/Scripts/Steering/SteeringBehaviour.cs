@@ -1,7 +1,6 @@
-using Hunter.Scripts;
 using UnityEngine;
 
-namespace Steering
+namespace Assets.Scripts.Steering
 {
 	public abstract class SteeringBehaviour : MonoBehaviour
 	{

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3578198009388391579}
   - component: {fileID: 1663174032140941103}
   - component: {fileID: 2054318255990078090}
+  - component: {fileID: -3180988604551283425}
+  - component: {fileID: -7194137437235365185}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Rabbit
@@ -154,5 +156,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
   acceleration: {x: 0, y: 0}
-  maxVelocity: 20
-  minVelocity: 5
+  maxVelocity: 15
+  minVelocity: 2
+--- !u!50 &-3180988604551283425
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411508454492649621}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-7194137437235365185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411508454492649621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18df3fd79c36434191768b107a5ea09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 0
+  source: {fileID: 0}
+  maxSteeringForce: 500
+  detectionRadius: 40

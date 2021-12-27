@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6158670750309313908}
   - component: {fileID: 2241147198282416731}
   - component: {fileID: 3825617116158137329}
+  - component: {fileID: 5295458242097351219}
+  - component: {fileID: 9155109963189894511}
   m_Layer: 0
   m_Name: Doe
   m_TagString: Doe
@@ -119,6 +121,7 @@ MonoBehaviour:
   flockingRadius: 40
   maxVelocity: 5
   cohesionCoeff: 1
+  Coeff: 0
 --- !u!58 &3825617116158137329
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -129,9 +132,46 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &5295458242097351219
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331358618811246899}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &9155109963189894511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331358618811246899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18df3fd79c36434191768b107a5ea09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 0
+  source: {fileID: 0}
+  maxSteeringForce: 890
+  detectionRadius: 50

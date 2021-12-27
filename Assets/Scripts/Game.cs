@@ -33,6 +33,12 @@ public class Game : MonoBehaviour
 				doe.transform.parent = group.transform;
 			}
 		}
+		for (int i = 0; i < rabbitsCount; i++)
+		{
+			var randX = Random.Range(0, fieldPosition.x/2);
+			var randY = Random.Range(0, fieldPosition.y/2);
+			Instantiate(rabbitPrefab, new Vector3(randX, randY, 0), default);
+		}
 	}
 
 

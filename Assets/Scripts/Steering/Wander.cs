@@ -1,7 +1,8 @@
+using Steering;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Steering
+namespace Assets.Scripts.Steering
 {
 	public class Wander : SteeringBehaviour
 	{

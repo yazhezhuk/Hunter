@@ -55,6 +55,14 @@ public class SteeringObject : MonoBehaviour
 		acceleration = Vector2.zero;
 	}
 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		var enemy = collision.gameObject;
+
+		Destroy(enemy);
+		Destroy(gameObject);
+	}
+
 	public void Update()
 	{
 		ApplySteeringForces();

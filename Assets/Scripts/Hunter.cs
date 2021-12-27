@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
+using UnityEngine;
 using UnityEngine.PlayerLoop;
 
 namespace Hunter.Scripts
@@ -20,7 +21,7 @@ namespace Hunter.Scripts
 
 		public void UpdatePosition()
 		{
-			transform.position += (Vector3)velocity;
+			transform.position += (Vector3)velocity * Time.deltaTime;
 		}
 
 		public void AddForce(Vector2 force)
@@ -48,18 +49,20 @@ namespace Hunter.Scripts
 				AddForce(movePosition * playerSpeed) ;
 				ApplyForce();
 				UpdatePosition();
-				ReduceSpeed();
-				acceleration = Vector2.zero;
 
 			}
 
 			if (Input.GetMouseButtonDown(1)) //for firing
 			{
 				movePosition = (mousePosition - playerPosition).normalized;
-				Instantiate(bulletPrefab,
-					(Vector2)transform.position + movePosition * 2,default);
+				var bullet = Instantiate(bulletPrefab,
+					(Vector2)transform.position + movePosition.normalized * 2,
+					Quaternion.Euler(movePosition.normalized));
+				bullet.GetComponent<Bullet>().direction = movePosition.normalized;
 			}
 
+			ReduceSpeed();
+			acceleration = Vector2.zero;
 
 
 		}

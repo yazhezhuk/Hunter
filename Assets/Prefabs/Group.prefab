@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6497924566205605887}
   - component: {fileID: 3678653047060400641}
   - component: {fileID: 5619732144229293245}
+  - component: {fileID: 3563884584701195012}
   m_Layer: 0
   m_Name: Group
   m_TagString: Doe
@@ -120,7 +121,7 @@ MonoBehaviour:
   - Wolf
   - Player
   aggressorsPosition: []
-  detectionRadius: 70
+  detectionRadius: 170
 --- !u!114 &5619732144229293245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,5 +136,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
   acceleration: {x: 0, y: 0}
-  maxVelocity: 5
-  minVelocity: 4
+  maxVelocity: 30
+  minVelocity: 10
+--- !u!114 &3563884584701195012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922508698716095741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18df3fd79c36434191768b107a5ea09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: -2
+  source: {fileID: 0}
+  maxSteeringForce: 10
+  detectionRadius: 5

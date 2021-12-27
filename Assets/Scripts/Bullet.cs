@@ -1,29 +1,31 @@
 using UnityEngine;
 
-namespace Hunter.Scripts
+namespace Assets.Scripts
 {
 
 	public class Bullet : MonoBehaviour
 	{
-		[SerializeField] private float maxVelocity;
-		[SerializeField] private Vector2 velocity;
+		[SerializeField] public float maxVelocity;
+		[SerializeField] public Vector2 direction;
 
-
-		private void Start()
+		public void OnTriggerEnter2D(Collider2D col)
 		{
-			velocity += (Vector2)transform.position.normalized * maxVelocity;
-		}
-
-		private void OnCollisionEnter2D(Collision2D collision)
-		{
-			var enemy = collision.gameObject;
-
-			Destroy(enemy);
+			if (!col.gameObject.CompareTag("Field"))
+			{
+				Destroy(col.gameObject);
+				Destroy(gameObject);
+			}
 		}
 
 		private void Update()
 		{
-			transform.position += (Vector3)velocity * Time.deltaTime;
+			transform.position += (Vector3)direction * maxVelocity * Time.deltaTime;
+			maxVelocity -= Time.deltaTime;
+
+			if (maxVelocity <= 0)
+			{
+				Destroy(gameObject);
+			}
 		}
 	}
 }

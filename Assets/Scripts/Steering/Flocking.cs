@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Steering
+namespace Assets.Scripts.Steering
 {
 	public class Flocking : SteeringBehaviour
 	{

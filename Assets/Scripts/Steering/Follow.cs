@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Steering
+namespace Assets.Scripts.Steering
 {
 	public class Follow : SteeringBehaviour
 	{
