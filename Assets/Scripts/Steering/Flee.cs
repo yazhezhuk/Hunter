@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace Hunter.Scripts.Steering
 {
-	public class Flee : SteeringComponent
+	public class Flee : SteeringBehaviour
 	{
+		public Transform aggressorPosition;
 
-		public override Vector2 GetSteeringVelocity(Transform desiredPosition)
+		public override Vector2 GetSteeringVelocity()
 		{
-			return -(transform.position - desiredPosition.transform.position).normalized * Wolf.maxSpeed;
+			return -(transform.position - aggressorPosition.transform.position).normalized * source.maxVelocity;
 
 		}
 	}

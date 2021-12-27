@@ -7,24 +7,17 @@ using Random = UnityEngine.Random;
 
 namespace Hunter.Scripts.Steering
 {
-	public class Wander : SteeringComponent
+	public class Wander : SteeringBehaviour
 	{
-		[SerializeField]
-		public float wanderRadius;
-		[SerializeField]
-		public float wanderSpeed;
-		[SerializeField]
 		public float maxAngleFluctuations;
 
-
-
-		public override Vector2 GetSteeringVelocity(Transform desiredPosition)
+		public override Vector2 GetSteeringVelocity()
 		{
 
 			var direction = Random.insideUnitCircle.normalized;
-			if (Vector2.Angle(Wolf.speed.normalized,direction.normalized) >= maxAngleFluctuations)
+			if (Vector2.Angle(source.velocity.normalized,direction.normalized) > maxAngleFluctuations)
 			{
-				return Wolf.speed.normalized;
+				return source.velocity.normalized;
 			}
 
 			return direction.normalized;
