@@ -19,6 +19,11 @@ namespace Hunter.Scripts
 		}
 
 
+		void Attack(object target)
+		{
+
+		}
+
 		public override void ApplyForce(Vector2 force)
 		{
 			acceleration += force;

@@ -299,8 +299,9 @@ GameObject:
   - component: {fileID: 363779389}
   - component: {fileID: 363779388}
   - component: {fileID: 363779387}
+  - component: {fileID: 363779390}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,13 +379,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363779386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.72, y: -13.75, z: 0}
-  m_LocalScale: {x: 6.4667006, y: 6.4666996, z: 6.4667}
+  m_LocalPosition: {x: 9.6118, y: -14.8582, z: 0}
+  m_LocalScale: {x: 4.250562, y: 4.2505617, z: 6.4667}
   m_Children:
   - {fileID: 207720861}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &363779390
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363779386}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &365865368
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +659,7 @@ GameObject:
   - component: {fileID: 819083169}
   - component: {fileID: 819083168}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -689,7 +706,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.17616042, g: 0.6415094, b: 0.13616946, a: 1}
+  m_Color: {r: 0.1372549, g: 0.64705884, b: 0.346968, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -722,11 +739,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 888299897}
+  - component: {fileID: 888299901}
   - component: {fileID: 888299896}
-  - component: {fileID: 888299898}
   - component: {fileID: 888299899}
+  - component: {fileID: 888299900}
+  - component: {fileID: 888299898}
   m_Layer: 0
-  m_Name: Circle (1)
+  m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,8 +810,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888299895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -15.24, z: 0}
-  m_LocalScale: {x: 7.017647, y: 6.6173706, z: 0}
+  m_LocalPosition: {x: -1.6999, y: -17.9694, z: 0}
+  m_LocalScale: {x: 3.6173286, y: 3.1552806, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -809,10 +828,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808eb14c344a46d5b4a9d8fe60ebf0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 0
-  wanderRadius: 1
-  wanderSpeed: 0.11
-  maxAngleFluctuations: 30
+  priority: 1
+  source: {fileID: 888299899}
+  maxAngleFluctuations: 15
 --- !u!114 &888299899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,12 +843,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef43e328b714d799c915191a77319a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 0}
-  acceleration: {x: 0, y: 0, z: 0}
-  maxSpeed: 0.1
-  wanderingSpeed: 0.1
-  detectionRadius: 123
-  accelerationReduction: 0
+  velocity: {x: 0, y: 0}
+  acceleration: {x: 0, y: 0}
+  maxVelocity: 5
+  minVelocity: 0.2
+  maxSteeringForce: 2
+  wanderingSpeed: 5
+  detectionRadius: 0
+--- !u!114 &888299900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888299895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87275c1682e7467891dd47154ad1477a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: -1
+  source: {fileID: 888299899}
+  detectionRadius: 2
+  targetPosition: {fileID: 0}
+--- !u!58 &888299901
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888299895}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.58
 --- !u!1 &1114870147
 GameObject:
   m_ObjectHideFlags: 0

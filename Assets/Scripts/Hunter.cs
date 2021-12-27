@@ -21,7 +21,9 @@ namespace Hunter.Scripts
 			var hunterTransform = transform;
 
 			if (Input.GetMouseButton(0))
-				hunterTransform.position += (-hunterTransform.position + Camera.main!.ScreenToWorldPoint(Input.mousePosition)).normalized
+				hunterTransform.position += (Vector3)((Vector2)(-hunterTransform.position) + (Vector2)Camera.main!
+				.ScreenToWorldPoint(Input
+				.mousePosition)).normalized
 				                            * distance.magnitude;
 
 			if (Input.GetMouseButton(1)) //for firing
