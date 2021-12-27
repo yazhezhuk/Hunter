@@ -7,6 +7,7 @@ namespace Steering
 	{
 		public int priority;
 		public SteeringObject source;
+		public float maxSteeringForce;
 
 		void Start()
 		{

@@ -26,7 +26,7 @@ public class SteeringManager : ScriptableObject
 	}
 
 	private Vector2 GetComponentImpact(SteeringBehaviour component) =>
-		component.GetSteeringVelocity() * component.source.maxSteeringForce * (1 / Mathf.Pow(2, component.priority));
+		component.GetSteeringVelocity() * component.maxSteeringForce * (1 / Mathf.Pow(2, component.priority));
 
 	private void SortByPriority()
 	{

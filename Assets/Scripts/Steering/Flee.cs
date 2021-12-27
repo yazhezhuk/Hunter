@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Hunter.Scripts;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace Steering
 {
 	public class Flee : SteeringBehaviour
 	{
+		public List<string> runFromTags;
 		public List<Transform> aggressorsPosition;
 		public float detectionRadius;
 
@@ -14,11 +16,16 @@ namespace Steering
 		{
 			var potentialTargets = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
 
-			var aggressors = potentialTargets
-				.Where(target =>
-					target.GetComponent<Hunter.Scripts.Hunter>() != target.GetComponent<Wolf>())
-				.Select(target => target.transform)
-				.ToList();
+			var aggressors = new List<Transform>();
+
+			foreach (var target in potentialTargets)
+			{
+				var entity = target.gameObject;
+				if (runFromTags.Contains(entity.tag))
+				{
+					aggressors.Add(entity.transform);
+				}
+			}
 
 			aggressorsPosition = aggressors;
 		}
