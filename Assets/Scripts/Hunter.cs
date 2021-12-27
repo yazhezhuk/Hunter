@@ -4,13 +4,13 @@ namespace Hunter.Scripts
 {
 	public class Hunter : MonoBehaviour
 	{
-		[SerializeField] private float speed;
+		[SerializeField] private Vector3 speed;
 
 
 		public void ApplyForce()
 		{
 			var hunterTransform = transform;
-			hunterTransform.position += hunterTransform.forward * speed;
+			hunterTransform.position += hunterTransform.forward * speed.magnitude;
 		}
 
 
@@ -22,7 +22,7 @@ namespace Hunter.Scripts
 
 			if (Input.GetMouseButton(0))
 				hunterTransform.position += (-hunterTransform.position + Camera.main!.ScreenToWorldPoint(Input.mousePosition)).normalized
-				                            * distance;
+				                            * distance.magnitude;
 
 			if (Input.GetMouseButton(1)) //for firing
 			{
