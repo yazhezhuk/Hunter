@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7918567265644648137}
   - component: {fileID: 1860099195626860118}
+  - component: {fileID: -6497924566205605887}
   - component: {fileID: 3678653047060400641}
   - component: {fileID: 5619732144229293245}
   m_Layer: 0
   m_Name: Group
-  m_TagString: Untagged
+  m_TagString: Doe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6497924566205605887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922508698716095741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808eb14c344a46d5b4a9d8fe60ebf0e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 0
+  source: {fileID: 0}
+  maxSteeringForce: 6
+  maxAngleFluctuations: 30
 --- !u!114 &3678653047060400641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,9 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c37d56292e9441f91a80e20150351df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 0
+  priority: -1
   source: {fileID: 5619732144229293245}
-  maxSteeringForce: 20
+  maxSteeringForce: 2
   runFromTags:
   - Wolf
   - Player
@@ -118,5 +135,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
   acceleration: {x: 0, y: 0}
-  maxVelocity: 15
+  maxVelocity: 5
   minVelocity: 4

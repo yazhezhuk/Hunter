@@ -8,11 +8,13 @@ namespace Steering
 		public float flockingRadius;
 		public float maxVelocity;
 		public float cohesionCoeff;
+		public float Coeff;
+
 
 
 		public override Vector2 GetSteeringVelocity()
 		{
-			return Cohesion() + Align() + Separation(); // + Separation();
+			return Cohesion() + Align() + Separation();
 		}
 
 		private Vector2 Separation()
@@ -41,8 +43,9 @@ namespace Steering
 
 			if (separationForce.magnitude > 0)
 			{
-				separationForce.Normalize();
-				separationForce *= Random.Range(10,25);
+				separationForce *= maxVelocity;
+				separationForce = Vector3.ClampMagnitude(separationForce - GetComponent<SteeringObject>().velocity, maxVelocity);
+				separationForce *= 5;
 				return (separationForce);
 			}
 
@@ -77,7 +80,7 @@ namespace Steering
 			}
 
 
-			return direction * cohesionCoeff;
+			return direction.normalized * cohesionCoeff;
 		}
 	}
 }

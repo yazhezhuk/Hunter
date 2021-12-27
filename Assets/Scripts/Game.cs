@@ -24,7 +24,14 @@ public class Game : MonoBehaviour
 		{
 			var randX = Random.Range(0, fieldPosition.x/2);
 			var randY = Random.Range(0, fieldPosition.y/2);
-			Instantiate(wolfPrefab, new Vector3(randX, randY, 0), default);
+			var group = Instantiate(groupPrefab, new Vector3(randX, randY, 0), default);
+			var lim= Random.Range(3, 8);
+			for (int j = 0; j < lim; j++)
+			{
+				var doe = Instantiate(doePrefab, group.transform.position + (Vector3)Random.insideUnitCircle.normalized * 3,
+				default);
+				doe.transform.parent = group.transform;
+			}
 		}
 	}
 
