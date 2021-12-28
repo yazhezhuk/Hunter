@@ -1,37 +1,46 @@
-using System.Collections.Generic;
-using System.Linq;
-using Steering;
+using DefaultNamespace.Managers;
 using UnityEngine;
 
-namespace Hunter.Scripts
+namespace DefaultNamespace
 {
+
 	public class Wolf : SteeringObject
 	{
-
-		[SerializeField] public float wanderingSpeed;
-
-		[SerializeField] public float detectionRadius;
+		private float canBeAlive;
 
 		public void Start()
 		{
-			velocity = new Vector2(wanderingSpeed/2,wanderingSpeed/2);
+			canBeAlive= Random.Range(4000, 600000);
 		}
 
-
-		private void OnTriggerEnter2D(Collider2D collider)
+		public void OnTriggerEnter2D(Collider2D col)
 		{
+
+			if (!col.gameObject.CompareTag("Bullet")
+			    && !col.gameObject.CompareTag("Wolf")
+			    && !col.gameObject.CompareTag("Field"))
+			{
+				Destroy(col.gameObject);
+				canBeAlive += 100000;
+				NotificationManager.Instance.PostMessage("Wolf eaten " + col.gameObject.tag);
+			}else if (col.gameObject.CompareTag("Bullet"))
+			{
+				Destroy(col.gameObject);
+				Destroy(gameObject);
+			}
 
 		}
 
-
-
-		private void Update()
+		private new void Update()
 		{
-			ApplySteeringForces();
-			ApplyAcceleration();
-			UpdatePosition();
-			ReduceSpeed();
-			ResetAcceleration();
+			base.Update();
+			canBeAlive -= Time.deltaTime;
+
+			if (canBeAlive <= 0)
+			{
+				Destroy(this);
+				NotificationManager.Instance.PostMessage(name + " died because of starvation");
+			}
 		}
 
 	}

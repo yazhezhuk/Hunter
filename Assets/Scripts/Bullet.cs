@@ -1,3 +1,4 @@
+using DefaultNamespace.Managers;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -8,19 +9,20 @@ namespace Assets.Scripts
 		[SerializeField] public float maxVelocity;
 		[SerializeField] public Vector2 direction;
 
-		public void OnTriggerEnter2D(Collider2D col)
+		public void OnCollisionEnter2D(Collision2D col)
 		{
-			if (!col.gameObject.CompareTag("Field"))
-			{
-				Destroy(col.gameObject);
-				Destroy(gameObject);
-			}
+			if (col.gameObject.CompareTag("Field")) return;
+
+			NotificationManager.Instance.PostMessage("You killed" + col.gameObject.name + ", great job!");
+
+			Destroy(col.gameObject);
+			Destroy(gameObject);
 		}
 
 		private void Update()
 		{
 			transform.position += (Vector3)direction * maxVelocity * Time.deltaTime;
-			maxVelocity -= Time.deltaTime;
+			maxVelocity -= Time.deltaTime * 10;
 
 			if (maxVelocity <= 0)
 			{
